@@ -38,13 +38,16 @@ Route::prefix('admin')->group(function () {
 
 });
 
+Route::prefix('penduduk')->group(function () {
 Route::get('/login', [UserController::class, 'login'])->name('login_user');
 Route::post('/login_user_logic', [UserController::class, 'login_logic'])->name('login.user_logic');
 Route::get('/register', [UserController::class, 'register'])->name('register_user');
 Route::post('/store_register', [UserController::class, 'reg_penduduk'])->name('register');
+Route::get('/artikel', [UserController::class, 'detail_berita'])->name('detail');
 Route::get('/pengaduan', [UserController::class, 'pengaduan'])
 ->middleware('auth')
 ->name('pengaduan');
+});
 
 
 

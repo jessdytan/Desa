@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Penduduk;
+use illuminate\Support\Facades\Auth;
+use App\Models\Category;
+use App\Models\User;
 
 class userController extends Controller
 {
@@ -16,10 +18,14 @@ class userController extends Controller
     {
         return view('index');
     }
+    public function detail_berita()
+    {
+        return view('Artikel');
+    }
     
     public function pengaduan()
     {
-        $category = categories::all();
+        $category = Category::all();
         return view('Pengaduan',compact('category'));
     }
 
@@ -43,7 +49,7 @@ class userController extends Controller
             'password' =>"required|min:5"
         ]);
 
-        $new_penduduk = new Penduduk;
+        $new_penduduk = new User;
         $new_penduduk ->nama = $request->nama;
         $new_penduduk ->email = $request->email;
         $new_penduduk ->nik = $request->nik;
@@ -53,7 +59,7 @@ class userController extends Controller
 
         $new_penduduk->save();
 
-        return redirect('/login')->with('status','Berhasil diregistrasi silahkan login!');
+        return redirect()->route('login_user')->with('status','Berhasil diregistrasi silahkan login!');
     }
 
     public function login_logic(request $request)
@@ -62,21 +68,16 @@ class userController extends Controller
             'nik' => 'required',
             'password' => 'required',
         ]));
-
         $data = [
             'nik' => $request->nik,
             'password' => $request->password
         ];
 
-        if (Auth::guard('penduduks')->attempt($data)) {
+        if (Auth::guard('web')->attempt($data)) {
             $request->session()->regenerate();
-            // dd($request);
             return redirect()->route('pengaduan');
-
-        } elseif (Auth::guard('web')->attempt($data)) {
-            $request->session()->regenerate();
-            return redirect()->route('mainpage');
-        } else {
+        }
+        else {
             return redirect()->route('login_user')->with('failed', 'Email atau password salah');
         }
     }

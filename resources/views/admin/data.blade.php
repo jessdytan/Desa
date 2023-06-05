@@ -71,7 +71,7 @@
 
                         <tbody>
                             {{-- @php($i = 1) --}}
-                            @foreach ($penduduk as $penduduk)
+                            @foreach ($user as $penduduk)
                                 <tr>
                                     <th><span class="custom-checkbox">
                                             <input type="checkbox" id="checkbox1" name="option[]" value="1">

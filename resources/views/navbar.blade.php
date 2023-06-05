@@ -37,7 +37,7 @@
             </ul>
         </li>
         <li class="nav-item dropdown">
-            <a  style="color:white;font-size:larger;font-weight:200px; " class="nav-link "  href="/pengaduan" role="button" aria-expanded="false">LAYANAN PENGADUAN</a>
+            <a  style="color:white;font-size:larger;font-weight:200px; " class="nav-link "  href="{{ route('pengaduan') }}" role="button" aria-expanded="false">LAYANAN PENGADUAN</a>
         </li>
         <li class="nav-item dropdown">
             <a style="color:white;font-size:larger;font-weight:200px; "  class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">LEMMAS</a>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use illuminate\Support\Facades\Auth;
 use App\Models\Admin;
-use App\Models\Penduduk;
+use App\Models\User;
 
 class AdminAuthController extends Controller
 {
@@ -14,13 +14,13 @@ class AdminAuthController extends Controller
      */
     // public function postingan()
     // {
-    //     $penduduk = penduduk::select('nama', 'nik', 'email', 'no_hp', 'id')->get();
-    //     return view('admin.admin', compact('penduduk'));
+    //     $user = user::select('nama', 'nik', 'email', 'no_hp', 'id')->get();
+    //     return view('admin.admin', compact('user'));
     // }
     public function admin()
     {
-        $penduduk = penduduk::select('nama', 'nik', 'email', 'no_hp', 'id')->get();
-        return view('admin.data', compact('penduduk'));
+        $user = User::select('nama', 'nik', 'email', 'no_hp', 'id')->get();
+        return view('admin.data', compact('user'));
     }
     public function login()
     {
@@ -48,8 +48,9 @@ class AdminAuthController extends Controller
 
         if (Auth::guard('admin')->attempt($data)) {
             $request->session()->regenerate();
+            $user = Auth::guard('admin')->user();
             // dd($request);
-            return redirect()->route('admin');
+            return redirect()->route('admin',compact('user'));
 
         } elseif (Auth::guard('web')->attempt($data)) {
             $request->session()->regenerate();

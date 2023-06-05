@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DESA SUKAMAJU</title>
+    <title>DESA KOM C</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
 
 <!--Body-->
 <div class=" container py-5">
-<marquee behavior="slide" ><p class="tulisan"> <img  style="height:55px;width:80px;" src="img/desa.png" alt=""> SELAMAT  DATANG  DI WEBSITE DESA SUKAMAJU </p></marquee>
+<marquee behavior="slide" ><p class="tulisan"> <img  style="height:55px;width:80px;" src="img/desa.png" alt=""> SELAMAT  DATANG  DI WEBSITE DESA KOM C </p></marquee>
 
 <div class="row">
   <div class="col-8 ">
@@ -69,7 +69,7 @@
   <!--button 1-->
 
   <div class="d-grid gap-2" >
-  <a  href="Artikel.php" style="border-radius: 10px;box-shadow: 10px 1px 10px gray; background-color:#327a6d;" class="btn " type="button"><b>PEMBAGIAN BLT BULAN APRIL TAHUN 2022</b></a>
+  <a  href="{{ route('detail') }}" style="border-radius: 10px;box-shadow: 10px 1px 10px gray; background-color:#327a6d;" class="btn " type="button"><b>PEMBAGIAN BLT BULAN APRIL TAHUN 2022</b></a>
   </div><br>
 
     <!--card 1-->

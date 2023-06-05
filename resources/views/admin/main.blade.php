@@ -118,7 +118,11 @@
                                             <ul class="dropdown-menu small-menu">
                                                 <li><a href="#">
                                                         <span class="material-icons">person_outline</span>
-                                                        Profile
+                                                        @php
+                                                        $user = Auth::guard('admin')->user();
+                                                            
+                                                        @endphp
+                                                        {{ $user->nama }}
                                                     </a></li>
                                                 <li><a href="#">
                                                         <span class="material-icons">settings</span>

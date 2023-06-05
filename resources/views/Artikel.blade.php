@@ -8,72 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.css') }}">
     <script src="https://kit.fontawesome.com/bc3cf86588.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
     
 </head>
 <body style="font-family: serif;">
 
-    <!--  NAVBAR -->
-    <div class="container py-5">   
-<div class="shadow p-3 mb-5  fixed-top bg-body-tertiary rounded">
-<div style="background-color: #327a6d;">
-<div class="nav justify-content-center">
-   <ul class="nav nav-fill">
-  <li class="nav-item">
-    <a  style="color:white;font-size:larger;font-weight:200px; " class="nav-link active" aria-current="page" href="#">BERANDA</a>
-  </li>
-  <li class="nav-item dropdown">
-    <a  style="color:white;font-size:larger;font-weight:200px; " class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PEMERINTAHAN DESA</a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Visi dan Misi</a></li>
-      <li><a class="dropdown-item" href="#">Pemerintah Desa</a></li>
-      <li><a class="dropdown-item" href="#">Badan Permusyawaratan Desa</a></li>
-    </ul>
-  </li>
-  <li class="nav-item dropdown">
-    <a  style="color:white;font-size:larger;font-weight:200px; " class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PROFIL DESA</a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#"> Sejarah Desa</a></li>
-      <li><a class="dropdown-item" href="#">Profil Wilayah Desa</a></li>
-      <li><a class="dropdown-item" href="#">Arti Lambang Desa</a></li>
-    </ul>
-  </li>
-  <li class="nav-item dropdown">
-    <a  style="color:white;font-size:larger;font-weight:200px; " class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">DATA DESA</a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#"> Data Pekerjaan</a></li>
-      <li><a class="dropdown-item" href="#"> Data Jenis Kelamin</a></li>
-      <li><a class="dropdown-item" href="#"> Data Kelompok Umur</a></li>
-    </ul>
-  </li>
-  <li class="nav-item dropdown">
-    <a  style="color:white;font-size:larger;font-weight:200px; " class="nav-link "  href="#" role="button" aria-expanded="false">LAYANAN PENGADUAN</a>
-  </li>
-  <li class="nav-item dropdown">
-    <a style="color:white;font-size:larger;font-weight:200px; "  class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">LEMMAS</a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">LPM</a></li>
-      <li><a class="dropdown-item" href="#">Karang Taruna</a></li>
-      <li><a class="dropdown-item" href="#">PKK</a></li>
-    </ul>
-  </li>
-  <li class="nav-item dropdown">
-    <a  style="color:white;font-size:larger;font-weight:200px; " class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">LOGIN</a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Administrator</a></li>
-      <li><a class="dropdown-item" href="#">Layanan Mandiri</a></li>
-    </ul>
-  </li>
-</ul>
-</div>
-</div>
-</div><br><br><br>
+    @include('navbar')
+<br><br><br>
 
 <!--Sebelah Kiri-->
 
@@ -212,31 +159,7 @@
     </div><!--penutup row-->
 </div><!--penutup container-->
 <br><br><br>
-<footer>
-<div class="bawah">
-  <div class="row">
-    <div class="col-4 px-5 py-5">
-    <h3 style="color: #ffa500;">PROFIL</h3>
-      Desa Sukamaju adalah Desa yang terkenal dengan keindahan alamnya yang membuat siapun yang melihantnya merasa 
-      kagum. Desa ini juga dipenuhi oleh penduduk-penduduk yang ramah sehingga banyak wisatawan yang senang untuk berkunjung
-    </div>
-    <div class="col-4 px-5 py-5 ">
-    <h3 style="color: #ffa500;">DESA SUKAMAJU</h3>
-        Kecamatan Sunggal KAB.Deli Serdang <br>
-        Provinsi Sumatera Utara <br>
-        Kode POS 28872 <br>
-    </div>
-    <div class="col-4 px-5 py-5 ">
-    <h3 style="color: #ffa500;">MEDIA SOSIAL</h3>
-      <div>
-        <a href="http://"><i class="fa-brands fa-instagram fa-2xl px-2" style="color: #050505;"></i></a>
-        <a href="http://"><i class="fa-brands fa-facebook fa-2xl" style="color: #000000;"></i></a>
-        <a href="http://"><i class="fa-brands fa-youtube fa-2xl" style="color: #000000;"></i></a>
-      </div>
-    </div>
-  </div>
-</div>
-</footer>
+@include('footer')
 <script>
 let slideIndex = 0;
 showSlides();
@@ -261,7 +184,6 @@ function showSlides() {
 }
 </script>
 <script src="https://kit.fontawesome.com/bc3cf86588.js" crossorigin="anonymous"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/style.js"></script>
+<script src="{{ asset('js/style.js') }}"></script>
 </body>
 </html>

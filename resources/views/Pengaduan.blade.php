@@ -8,13 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/navbar.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.css') }}">
     <script src="https://kit.fontawesome.com/bc3cf86588.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
     
 </head>
 <body style="font-family: serif;">
@@ -109,13 +109,7 @@
   <br>
 
   <!--layanan pengaduan desa-->
-  <div class="col-4">
-  <div class="sudes">
-  <div class="bacaan"><i class="fa-solid fa-envelope" style="color: #327a6d;"></i>   LAYANAN PENGADUAN DESA</div>
-  <div class="" >
-  <a href="Pengaduan.php"><button  style=" background-color:#327a6d;" class="btn" type="button"><b>LAPOR DISINI</b></button></a>
-  </div><br>
-  </div><br>
+  
 
   <!--Statistik-->
   <div class="sts px-5">
@@ -141,27 +135,27 @@
   <p style="text-align: center;" ><i class="fa-solid fa-user" style="color: #327a6d;"></i> <b>PERANGKAT  DESA</b></p><hr>
 <div class="slideshow-container">
 <div class="mySlides fade">
-  <img class="foto" src="img/Rifqy.jpg" style="width:100%">
+  <img class="foto" src="{{ asset('img/Rifqy.jpg') }}" style="width:100%">
   <div class="text">Rifqy Jabrah Rhae- Kepala Desa</div>
 </div>
 
 <div class="mySlides fade">
-  <img  class="foto" src="img/Jessindy.jpg" style="width:100%">
+  <img  class="foto" src="{{ asset('img/Jessindy.jpg') }}" style="width:100%">
   <div class="text">Jessindy Tanuwijaya-W.Kepala Desa</div>
 </div>
 
 <div class="mySlides fade">
-  <img  class="foto" src="img/Yohana.jpg" style="width:100%">
+  <img  class="foto" src="{{ asset('img/Yohana.jpg') }}" style="width:100%">
   <div class="text">Yohana Marbun-Sekretaris Desa</div>
 </div>
 
 <div class="mySlides fade">
-  <img  class="foto" src="img/Aliya.jpg" style="width:100%">
+  <img  class="foto" src="{{ asset('img/Aliya.jpg') }}" style="width:100%">
   <div class="text">Aliya Afifah-Bendahara Desa</div>
 </div>
 
 <div class="mySlides fade">
-  <img  class="foto" src="img/Marss.jpg" style="width:100%">
+  <img  class="foto" src="{{ asset('img/Marss.jpg') }}" style="width:100%">
   <div class="text">Marsyaloan Siburian- Kepala Dusun</div>
 </div>
 </div>
@@ -212,7 +206,6 @@ function showSlides() {
 }
 </script>
 <script src="https://kit.fontawesome.com/bc3cf86588.js" crossorigin="anonymous"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/style.js"></script>
+<script src="{{ asset('js/style.js') }}"></script>
 </body>
 </html>
