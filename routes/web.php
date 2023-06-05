@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\pendudukController;
 // use App\Http\Controllers\adminController;
 use App\Http\Controllers\UserController;
@@ -35,18 +36,27 @@ Route::prefix('admin')->group(function () {
     Route::get('admin/{id}/edit',[pendudukController::class,'edit_data'])->name('edit.data');
     Route::put('admin/{id}',[pendudukController::class,'update_data'])->name('update.data');
     Route::delete('admin/{id}/delete',[pendudukController::class,'delete_penduduk'])->name('penduduk.delete');
-
+    Route::get('berita',[AdminController::class,'berita'])->name('berita');
+    Route::get('komentar',[AdminController::class,'komentar'])->name('admin_komentar');
+    Route::get('/tambah_berita', [AdminController::class,'tambah_berita'])->name('tambah_berita');
+    Route::post('/berita/tambah', [AdminController::class,'store_berita'])->name('store_berita');
+    Route::get('/berita/{id}/edit', [AdminController::class,'edit_berita'])->name('edit_berita');
+    Route::delete('/berita/{id}/delete',[AdminController::class,'delete_berita'])->name('delete_berita');
+    Route::delete('/komentar/{id}/delete',[AdminController::class,'delete_komentar'])->name('delete_komentar');
+    Route::put('/berita/{id}',[AdminController::class,'update_berita'])->name('update_berita');
 });
 
 Route::prefix('penduduk')->group(function () {
-Route::get('/login', [UserController::class, 'login'])->name('login_user');
-Route::post('/login_user_logic', [UserController::class, 'login_logic'])->name('login.user_logic');
-Route::get('/register', [UserController::class, 'register'])->name('register_user');
-Route::post('/store_register', [UserController::class, 'reg_penduduk'])->name('register');
-Route::get('/artikel', [UserController::class, 'detail_berita'])->name('detail');
-Route::get('/pengaduan', [UserController::class, 'pengaduan'])
-->middleware('auth')
-->name('pengaduan');
+    Route::get('/login', [UserController::class, 'login'])->name('login_user');
+    Route::post('/login_user_logic', [UserController::class, 'login_logic'])->name('login.user_logic');
+    Route::get('/register', [UserController::class, 'register'])->name('register_user');
+    Route::post('/store_register', [UserController::class, 'reg_penduduk'])->name('register');
+    Route::get('/artikel/{id}', [UserController::class, 'detail_berita'])->name('detail');
+    Route::post('/komentar', [UserController::class, 'komentar'])->name('komentar');
+    
+    Route::get('/pengaduan', [UserController::class, 'pengaduan'])
+    ->middleware('auth')
+    ->name('pengaduan');
 });
 
 

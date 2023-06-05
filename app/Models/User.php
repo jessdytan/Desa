@@ -14,6 +14,8 @@ class User extends Authenticatable
 
     // protected $table = 'admin';
 
+    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -44,4 +46,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected $guarded = ["id"];
+
+    public function komentar(){
+        return $this->hasMany(Komentar::class);
+    }
 }

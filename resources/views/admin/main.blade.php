@@ -11,8 +11,13 @@
     <link rel="stylesheet" href="{{asset('Acss/bootstrap.min.css')}}">
     <!----css3---->
     <link rel="stylesheet" href="{{asset('Acss/custom.css')}}">
-
-
+    
+    <script src="{{ asset('tinymce/js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea'
+        });
+    </script>
     <!--google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,11 +44,14 @@
                 <h3><img src="{{asset('img/logo.png')}}" class="img-fluid" /><span>Desa kom C</span></h3>
             </div>
             <ul class="list-unstyled component m-0">
-                <li class="active">
-                    <a href="#" class="dashboard"><i class="material-icons">dashboard</i>Data penduduk </a>
+                <li class="{{ request()->is('admin/admin') ? 'active' : '' }}">
+                    <a href="{{ route('admin') }}" class="dashboard"><i class="material-icons">dashboard</i>Data penduduk </a>
                 </li>
-                <li class="">
-                    <a href="#" class="dashboard"><i class="material-icons">library_books</i>kelola berita </a>
+                <li class="{{ request()->is('admin/berita') ? 'active' : '' }}">
+                    <a href="{{ route('berita') }}" class="dashboard"><i class="material-icons">library_books</i>kelola berita </a>
+                </li>
+                <li class="{{ request()->is('admin/komentar') ? 'active' : '' }}">
+                    <a href="{{ route('admin_komentar') }}" class="dashboard"><i class="material-icons">library_books</i>kelola komentar </a>
                 </li>
                 <li class="">
                     <a href="#" class="dashboard"><i class="material-icons">border_color</i>kelola pengaduan </a>

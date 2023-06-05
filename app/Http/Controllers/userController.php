@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
+use App\Models\Komentar;
 use Illuminate\Http\Request;
 use illuminate\Support\Facades\Auth;
 use App\Models\Category;
@@ -16,17 +18,39 @@ class userController extends Controller
     
     public function index()
     {
-        return view('index');
+        // dd(auth()->user()->nama);
+        $berita = Berita::all();
+        return view('index',[
+            'berita' => $berita,
+        ]);
     }
-    public function detail_berita()
+    public function detail_berita($id)
     {
-        return view('Artikel');
+        $komentar = Komentar::where('berita_id', $id)->get();
+        $berita = Berita::find($id);
+        return view('Artikel',[
+            'berita' => $berita,
+            'komentar' => $komentar,
+        ]);
     }
     
     public function pengaduan()
     {
         $category = Category::all();
         return view('Pengaduan',compact('category'));
+    }
+
+    public function komentar(request $request)
+    {
+        $komentar = new Komentar;
+
+        $komentar->komentar = $request->komentar;
+        $komentar->berita_id = $request->berita_id;
+        $komentar->user_id = auth()->user()->id;
+
+        $komentar->save();
+
+        return redirect()->back();
     }
 
     public function login()
