@@ -33,6 +33,11 @@ Route::prefix('admin')->group(function () {
     Route::post('login_admin_logic',[AdminAuthController::class,'login_logic'])->name('login.admin_logic');
     Route::get('logout',[AdminAuthController::class,'logout'])->name('logout.admin');
     Route::get('admin',[AdminAuthController::class,'admin'])->name('admin');
+    Route::get('pengaduan',[AdminAuthController::class,'pengaduan'])->name('admin.pengaduan');
+    Route::get('pengaduan_masuk',[AdminAuthController::class,'pengaduan_masuk'])->name('pengaduan.masuk');
+    Route::get('pengaduan_process',[AdminAuthController::class,'pengaduan_process'])->name('pengaduan.process');
+    Route::get('detail_pengaduan/{id}',[AdminAuthController::class,'detail_pengaduan'])->name('pengaduan.detail');
+    Route::get('pengaduan_selesai',[AdminAuthController::class,'pengaduan_selesai'])->name('pengaduan.selesai');
     Route::get('admin/{id}/edit',[pendudukController::class,'edit_data'])->name('edit.data');
     Route::put('admin/{id}',[pendudukController::class,'update_data'])->name('update.data');
     Route::delete('admin/{id}/delete',[pendudukController::class,'delete_penduduk'])->name('penduduk.delete');
@@ -47,13 +52,14 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::prefix('penduduk')->group(function () {
+
     Route::get('/login', [UserController::class, 'login'])->name('login_user');
     Route::post('/login_user_logic', [UserController::class, 'login_logic'])->name('login.user_logic');
+    Route::post('/create_pengaduan', [UserController::class, 'store_pengaduan'])->name('store_pengaduan');
     Route::get('/register', [UserController::class, 'register'])->name('register_user');
     Route::post('/store_register', [UserController::class, 'reg_penduduk'])->name('register');
     Route::get('/artikel/{id}', [UserController::class, 'detail_berita'])->name('detail');
     Route::post('/komentar', [UserController::class, 'komentar'])->name('komentar');
-    
     Route::get('/pengaduan', [UserController::class, 'pengaduan'])
     ->middleware('auth')
     ->name('pengaduan');
