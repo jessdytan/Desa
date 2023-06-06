@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use illuminate\Support\Facades\Auth;
 use App\Models\Admin;
 use App\Models\User;
+use App\Models\Pengaduan;
 
 class AdminAuthController extends Controller
 {
@@ -21,6 +22,41 @@ class AdminAuthController extends Controller
     {
         $user = User::select('nama', 'nik', 'email', 'no_hp', 'id')->get();
         return view('admin.data', compact('user'));
+    }
+    public function pengaduan()
+    {
+        $pengaduan = Pengaduan::join('users', 'pengaduans.penduduk_id', '=', 'users.id')
+        ->select('pengaduans.*', 'users.*')
+        ->get();
+        
+        return view('admin.pengaduan', compact('pengaduan'));
+    }
+    public function pengaduan_masuk()
+    {
+        $pengaduan = Pengaduan::where('pengaduans.status_laporan', '=', 0)
+        ->get();
+        
+        return view('admin.pengaduan_masuk', compact('pengaduan'));
+    }
+    public function pengaduan_process()
+    {
+        $pengaduan = Pengaduan::where('pengaduans.status_laporan', '=', 1)
+        ->get();
+        
+        return view('admin.pengaduan_process', compact('pengaduan'));
+    }
+    public function detail_pengaduan($id)
+    {
+        $pengaduan = Pengaduan::find($id)->first();
+        
+        return view('admin.detail_pengaduan', compact('pengaduan'));
+    }
+    public function pengaduan_selesai()
+    {
+        $pengaduan = Pengaduan::where('pengaduans.status_laporan', '=', 2)
+        ->get();
+        
+        return view('admin.pengaduan_selesai', compact('pengaduan'));
     }
     public function login()
     {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use illuminate\Support\Facades\Auth;
 use App\Models\Category;
+use App\Models\Pengaduan;
 use App\Models\User;
 
 class userController extends Controller
@@ -60,6 +61,29 @@ class userController extends Controller
         $new_penduduk->save();
 
         return redirect()->route('login_user')->with('status','Berhasil diregistrasi silahkan login!');
+    }
+    public function store_pengaduan(request $request)
+    {
+        $validated = $request->validate([
+            'title' =>"required|min:5|max:100",
+            'content' =>"required|min:5",
+            'lokasi' =>"required|min:10",
+            'bukti' => "image|mimes:jpg,png,jpeg,gif,svg"
+        ]);
+
+        $new_laporan = new Pengaduan;
+        $new_laporan ->judul_laporan = $request->title;
+        $new_laporan ->penduduk_id = $request->penduduk;
+        $new_laporan ->content_laporan = $request->content;
+        $new_laporan ->status_laporan = $request->status;
+        $new_laporan ->lokasi = $request->lokasi;
+        $new_laporan ->category_id = $request->category;
+        $new_laporan ->gambar = $request->bukti;
+        $new_laporan ->id = $request->id;
+
+        $new_laporan->save();
+
+        return redirect()->route('pengaduan')->with('status','Pengaduan Anda berhasil diajukan!');
     }
 
     public function login_logic(request $request)

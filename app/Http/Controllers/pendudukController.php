@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Models\Penduduk;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class pendudukController extends Controller
@@ -25,7 +25,7 @@ class pendudukController extends Controller
         ]);
         // dd();
 
-        $new_post = new Penduduk;
+        $new_post = new User;
         $new_post -> nama       = $request->name;
         $new_post -> nik        = $request->nik;
         $new_post -> email      = $request->email;
@@ -42,7 +42,7 @@ class pendudukController extends Controller
 
         // $id;
         
-        $penduduk = Penduduk::find($id);
+        $penduduk = User::find($id);
 
         return view('admin.edit', compact('penduduk'));
         
@@ -57,7 +57,7 @@ class pendudukController extends Controller
         ]);
         // dd();
 
-        $penduduk = Penduduk::find($id);
+        $penduduk = User::find($id);
         $penduduk -> nama       = $request->name;
         $penduduk -> nik        = $request->nik;
         $penduduk -> email      = $request->email;
@@ -70,7 +70,7 @@ class pendudukController extends Controller
     }
 
     public function delete_penduduk($id){
-        $penduduk = Penduduk::find($id);
+        $penduduk = User::find($id);
         $penduduk->delete();
 
         return redirect()->route('admin')->with('hapus_status', 'Data penduduk berhasil dihapus');

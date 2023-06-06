@@ -29,12 +29,27 @@
     <div class="pengaduan">
         <div>SAMPAIKAN LAPORAN ANDA</div>
         <hr>
-        <form action="" method="post" enctype="multipart/form-data">
+        @if (session('status'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Berhasil!</strong> {{ session('status') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @elseif(session('update_status'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Berhasil!</strong> {{ session('update_status') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        <form action="{{ route('store_pengaduan') }}" method="post" enctype="multipart/form-data">
           @csrf
     <br>
         <div class="complaint-form-category">
             <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="Ketik Judul Laporan Anda *" value="{{ old('title') }}" required></textarea>
-            <input type="hidden" name="penduduk" value="{{ session('id') }}">
+            @php
+            $penduduk = Auth::guard('web')->user();      
+            @endphp
+            <input type="hidden" name="penduduk" value="{{ $penduduk->id }}">
+            <input type="hidden" name="status" value="0">
             @error('title')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -114,7 +129,7 @@
   <!--Statistik-->
   <div class="sts px-5">
   <img class="statistik" src="img/statistik.png" alt="" srcset="">
-  </div><br>
+  </div>
 
   <!--Pengumuman-->
   <div class="pemberitahuan px-5">
@@ -167,7 +182,7 @@
   <span class="dot"></span> 
   <span class="dot"></span> 
 </div>
-</div><br>
+</div>
 
 <!--maps-->
 <div class="pemberitahuan1 px-5">
@@ -179,7 +194,7 @@
   </div> <!--tag penutup col-4-->
     </div><!--penutup row-->
 </div><!--penutup container-->
-<br><br><br>
+
 <!-- Footer -->
 @include('footer')
 <script>

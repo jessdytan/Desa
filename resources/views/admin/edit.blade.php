@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <label for="nohp">No Hp</label>
                             <input type="text" class="form-control  @error('nohp') is-invalid @enderror" id="nohp" value="{{$penduduk->no_hp}}"
-                                name="nohp" required>
+                                name="nohp" required> 
                             @error('nohp')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -44,6 +44,7 @@
                             <label for="password">Password</label>
                             <input type="password" class="form-control  @error('password') is-invalid @enderror" id="password" value="{{$penduduk->password}}"
                                 name="password" required>
+                                <i class="bi bi-eye-slash" id="togglePassword"></i>
                             @error('password')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -51,11 +52,23 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-secondary" onclick="window.history.back();">Cancel</button>
                         <button type="submit" class="btn btn-success">Edit</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye / eye slash icon
+    this.classList.toggle('bi-eye');
+});
+    </script>
+    
 @endsection

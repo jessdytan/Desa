@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('Acss/bootstrap.min.css')}}">
     <!----css3---->
     <link rel="stylesheet" href="{{asset('Acss/custom.css')}}">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
     <!--google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,22 +34,7 @@
 
         <!-------sidebar--design------------>
 
-        <div id="sidebar">
-            <div class="sidebar-header">
-                <h3><img src="{{asset('img/logo.png')}}" class="img-fluid" /><span>Desa kom C</span></h3>
-            </div>
-            <ul class="list-unstyled component m-0">
-                <li class="active">
-                    <a href="#" class="dashboard"><i class="material-icons">dashboard</i>Data penduduk </a>
-                </li>
-                <li class="">
-                    <a href="#" class="dashboard"><i class="material-icons">library_books</i>kelola berita </a>
-                </li>
-                <li class="">
-                    <a href="#" class="dashboard"><i class="material-icons">border_color</i>kelola pengaduan </a>
-                </li>
-            </ul>
-        </div>
+        @include('admin.sidebar')
 
         <!-------sidebar--design- close----------->
 
@@ -198,7 +183,16 @@
     <script src="{{asset('Ajs/bootstrap.min.js')}}"></script>
     <script src="{{asset('Ajs/jquery-3.3.1.min.js')}}"></script>
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> --}}
-
+    <script>
+                function myFunction() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+        }
+    </script>
 
     {{-- <script>
         $('body').on('click', '#editEmployeeModal', function(event) {
