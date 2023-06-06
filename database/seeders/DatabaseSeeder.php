@@ -28,16 +28,9 @@ class DatabaseSeeder extends Seeder
            'no_hp' => '081251428417',
            'password' => bcrypt('123'), 
         ]);
-        Berita::create([
-            'judul' => 'berita 1',
-            'konten' => 'Luthfi pembantai galat',
-            'slug' => 'berita-1',
-            'excerpt' => 'luthfi',
-            'gambar' => 'a',
-            'tanggal_upload' => now(),
-        ]);
 
         $this ->call(CategoryTableSeeder::class);
         $this ->call(AdminTableSeeder::class);
+        $this ->call(BeritaTableSeeder::class);
     }
 }

@@ -67,8 +67,13 @@
                         </thead>
 
                         <tbody>
-                            @php($i = 1)
-                            @foreach ($berita as $berita)
+                            @php
+                                // $t = request('page');
+                                // $i = $t * 5
+                                // dd($i)
+                                $i = 1
+                            @endphp
+                            @foreach ($beritas as $berita)
                                 <tr>
                                     <th>{{ $i++ }}</th>
                                     <th>{{ $berita->judul }}</th>
@@ -98,9 +103,10 @@
                             @endforeach
                         </tbody>
 
-
                     </table>
-
+                    <div class="d-flex justify-content-end">
+                        {{ $beritas->links() }}
+                    </div>
                 </div>
             </div>
 

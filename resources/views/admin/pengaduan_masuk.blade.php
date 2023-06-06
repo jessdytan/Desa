@@ -62,13 +62,14 @@
                         <tbody>
                             {{-- @php($i = 1) --}}
                             @foreach ($pengaduan as $penduduk)
+                            {{-- @dd($penduduk->user->nama) --}}
                                 <tr>
                                     <th><span class="custom-checkbox">
                                             <input type="checkbox" id="checkbox1" name="option[]" value="1">
                                             <label for="checkbox1"></label></th>
-                                    <th>{{ $penduduk->nama }}</th>
+                                    <th>{{ $penduduk->user->nama }}</th>
                                     <th><a href="">{{ $penduduk->judul_laporan }}</a></th>
-                                    <th>{{ $penduduk->email }}</th>
+                                    <th>{{ $penduduk->user->email }}</th>
                                     <th><h5><span class="badge badge-warning">Masuk</span></h5></th>
                                 </tr>
                             @endforeach

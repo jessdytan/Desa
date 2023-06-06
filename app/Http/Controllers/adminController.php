@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use App\Models\Komentar;
 use Illuminate\Http\Request;
-
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Str;
 class AdminController extends Controller
 {
     public function berita(Request $request){
-        $berita = Berita::select('judul', 'excerpt', 'tanggal_upload', 'id')->get();
-        return view('admin.berita', compact('berita'));
+        $beritas = Berita::paginate(5);
+        return view('admin.berita', compact('beritas'));
     }
     public function komentar(Request $request){
         $komentar = Komentar::all();
@@ -23,10 +24,10 @@ class AdminController extends Controller
 
     public function store_berita(Request $request)
     {
+        // dd('uhuy');
         $validate = $request->validate([
             'judul' => 'required|min:5|max:100',
             'slug' => 'required|min:5|max:150',
-            'excerpt' => 'required|min:5|max:150',
             'konten' => 'required|min:20',
             'gambar' => 'image|mimes:jpeg,jpg,png|max:4096'
         ]);
@@ -34,8 +35,8 @@ class AdminController extends Controller
         $new_berita = new Berita;
         $new_berita -> judul      = $request->judul;
         $new_berita -> slug    = $request->slug;
-        $new_berita -> excerpt    = $request->excerpt;
         $new_berita -> konten     = $request->konten;
+        $new_berita -> excerpt    = Str::limit(strip_tags($request->konten), 200);
 
         if($request->hasFile('gambar')){
             $location = public_path('/img');
@@ -63,7 +64,6 @@ class AdminController extends Controller
         $validate = $request->validate([
             'judul' => 'required|min:5|max:100',
             'slug' => 'required|min:5|max:150',
-            'excerpt' => 'required|min:5|max:150',
             'konten' => 'required|min:20',
             'gambar' => 'image|mimes:jpeg,jpg,png|max:4096'
         ]);
@@ -71,7 +71,7 @@ class AdminController extends Controller
         // $new_berita = new Berita;
         $berita -> judul      = $request->judul;
         $berita -> slug    = $request->slug;
-        $berita -> excerpt    = $request->excerpt;
+        $berita -> excerpt    = Str::limit(strip_tags($request->konten), 200);
         $berita -> konten     = $request->konten;
 
         if($request->hasFile('gambar')){
@@ -114,6 +114,11 @@ class AdminController extends Controller
         $komentar->delete();
 
         return redirect()->route('admin_komentar')->with('delete_status', "komentar berhasil dihapus");
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Berita::class, 'slug', $request->judul);
+        return response()->json(['slug' => $slug]);
     }
 
 

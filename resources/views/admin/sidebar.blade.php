@@ -3,8 +3,8 @@
         <h3><img src="{{asset('img/logo.png')}}" class="img-fluid" /><span>Desa kom C</span></h3>
     </div>
     <ul class="list-unstyled component m-0">
-        <li class="active">
-            <a href="#" class="dashboard"><i class="material-icons">dashboard</i>Data penduduk </a>
+        <li class="{{ request()->is('admin/admin') ? 'active' : '' }}">
+            <a href="{{ route('admin') }}" class="dashboard"><i class="material-icons">dashboard</i>Data penduduk </a>
         </li>
         <li class="dropdown" >
             <a href="#homeSubmenu3" data-toggle="collapse" aria-expanded="false" 
@@ -17,11 +17,14 @@
               <li><a href="{{ route('pengaduan.selesai') }}">Pengaduan Selesai</a></li>
           </ul>
 		</li>
-        <li class="">
-            <a href="#" class="dashboard"><i class="material-icons">library_books</i>kelola berita </a>
-        </li>
-        <li class="">
+        <li class="{{ request()->is('admin/pengaduan*') ? 'active' : '' }}">
             <a href="{{ route('admin.pengaduan') }}" class="dashboard"><i class="material-icons">border_color</i>kelola pengaduan </a>
+        </li>
+        <li class="{{ request()->is('admin/*berita*') ? 'active' : '' }}">
+            <a href="{{ route('berita') }}" class="dashboard"><i class="material-icons">library_books</i>kelola berita </a>
+        </li>
+        <li class="{{ request()->is('admin/komentar*') ? 'active' : '' }}">
+            <a href="{{ route('admin_komentar') }}" class="dashboard"><i class="material-icons">library_books</i>kelola Komentar </a>
         </li>
     </ul>
 </div>

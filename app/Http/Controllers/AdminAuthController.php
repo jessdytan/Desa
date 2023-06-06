@@ -20,7 +20,7 @@ class AdminAuthController extends Controller
     // }
     public function admin()
     {
-        $user = User::select('nama', 'nik', 'email', 'no_hp', 'id')->get();
+        $user = User::all();
         return view('admin.data', compact('user'));
     }
     public function pengaduan()

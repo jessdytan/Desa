@@ -7,7 +7,6 @@
                 <form action="{{ route('store_berita') }}" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
-                        @method('post')
                         <div class="form-group">
                             <label for="gambar">masukan gambar</label>
                             <input type="file" class="form-control  @error('gambar') is-invalid @enderror" id="gambar"
@@ -27,16 +26,8 @@
                         <div class="form-group">
                             <label for="slug">slug</label>
                             <input type="text" class="form-control  @error('slug') is-invalid @enderror" id="slug"
-                                name="slug" required >
+                                name="slug" readonly>
                             @error('slug')
-                                <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="excerpt">Excerpt</label>
-                            <input type="text" class="form-control  @error('excerpt') is-invalid @enderror"
-                                id="excerpt" name="excerpt" required >
-                            @error('excerpt')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -57,6 +48,18 @@
             </div>
         </div>
     </div>
+
+<script>
+    const judul = document.querySelector('#judul');
+    const slug = document.querySelector('#slug');
+
+    judul.addEventListener('change', function() {
+        fetch('/admin/berita/checkSlug?judul=' + judul.value)
+            .then(response => response.json())
+            .then(data => slug.value = data.slug)
+    })
+
+</script>
 
     
 @endsection
