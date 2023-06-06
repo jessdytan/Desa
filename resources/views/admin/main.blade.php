@@ -11,7 +11,17 @@
     <link rel="stylesheet" href="{{asset('Acss/bootstrap.min.css')}}">
     <!----css3---->
     <link rel="stylesheet" href="{{asset('Acss/custom.css')}}">
+
+    
+    <script src="{{ asset('tinymce/js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea'
+        });
+    </script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+
 
     <!--google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,6 +43,7 @@
         <div class="body-overlay"></div>
 
         <!-------sidebar--design------------>
+
 
         @include('admin.sidebar')
 
