@@ -7,7 +7,7 @@
             <a href="{{ route('admin') }}" class="dashboard"><i class="material-icons">dashboard</i>Data penduduk </a>
 
         </li>
-        <li class="dropdown" >
+        <li class="dropdown {{ request()->is('admin/pengaduan*') ? 'active' : '' }}" >
             <a href="#homeSubmenu3" data-toggle="collapse" aria-expanded="false" 
             class="dropdown-toggle">
                 <i class="material-icons">border_color</i>Kelola Pengaduan
@@ -19,10 +19,7 @@
               <li><a href="{{ route('pengaduan.selesai') }}">Pengaduan Selesai</a></li>
           </ul>
 		</li>
-
-        <li class="{{ request()->is('admin/pengaduan*') ? 'active' : '' }}">
-            <a href="{{ route('admin.pengaduan') }}" class="dashboard"><i class="material-icons">border_color</i>kelola pengaduan </a>
-        </li>
+        
         <li class="{{ request()->is('admin/*berita*') ? 'active' : '' }}">
             <a href="{{ route('berita') }}" class="dashboard"><i class="material-icons">library_books</i>kelola berita </a>
         </li>

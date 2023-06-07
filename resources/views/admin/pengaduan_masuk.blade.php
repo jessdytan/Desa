@@ -71,12 +71,14 @@
                                     <th>{{ $penduduk->user->nama }}</th>
                                     <th><a href="">{{ $penduduk->judul_laporan }}</a></th>
                                     <th>{{ $penduduk->user->email }}</th>
+                                    <th>{{ $penduduk->id }}</th>
                                     <th><h5><span class="badge badge-warning">Masuk</span></h5></th>
                                     <th>
                                         <form action="{{ route('ubah.process', ['id' => $penduduk->id]) }}" method="post">
                                             @csrf
                                             <input type="hidden" value="1" name="status_laporan">
                                             <button type="submit" name="btn-submit" class="btn btn-secondary">Proses</button>
+                                            <!-- <button class="btn btn-danger">Cancel</button> -->
                                         </form>
                                     </th>
                                 </tr>

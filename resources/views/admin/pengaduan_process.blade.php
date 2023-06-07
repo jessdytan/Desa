@@ -74,13 +74,6 @@
                                     <th>
                                         <div class="row">
                                             <div class="col-6">
-                                                <form action="{{ route('ubah.selesai', ['id' => $penduduk->id]) }}" method="post">
-                                                    @csrf
-                                                    <input type="hidden" value="2" name="status_laporan">
-                                                    <button type="submit" name="btn-submit" class="btn btn-success">Selesai</button>
-                                                </form>
-                                            </div>
-                                            <div class="col-6">
                                               <form action="{{ route('ubah.tolak',['id'=>$penduduk->id]) }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" value="3" name="status_laporan">
@@ -91,7 +84,7 @@
                             @endforeach
                         </tbody>
 
-
+php
                     </table>
 
                     {{-- <div class="clearfix">
