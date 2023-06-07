@@ -53,26 +53,18 @@
             <div class="col-8 ">
                 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
+
                         <div class="carousel-item active">
                             <img style="width:500px;height:380px;" src="img/contohsidang.jpeg" class="d-block w-100"
                                 alt="...">
                         </div>
-                        <div class="carousel-item">
-                            <img style="width:500px;height:380px;" src="img/contohgambar.jpeg" class="d-block w-100"
-                                alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img style="width:500px;height:380px;" src="img/contohgambar2.jpeg" class="d-block w-100"
-                                alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img style="width:500px;height:380px;" src="img/slide2.jpeg" class="d-block w-100"
-                                alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img style="width:500px;height:380px;" src="img/slide.jpg" class="d-block w-100"
-                                alt="...">
-                        </div>
+                        @foreach ($gambars as $gambar)
+                            <div class="carousel-item">
+                                <img style="width:500px;height:380px;" src="{{ asset('img/' . $gambar) }}" class="d-block w-100"
+                                    alt="...">
+                            </div>
+                        @endforeach
+
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
                         data-bs-slide="prev">
@@ -245,51 +237,16 @@
                 <div class="container gallery-container">
                     <div class="tz-gallery">
                         <div class="row">
-                            <div class="col-sm-6 col-md-4">
-                                <a class="lightbox" href="img/galery6.jpeg">
-                                    <img src="img/galery6.jpeg" alt="galery">
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <a class="lightbox" href="img/galery2.jpg">
-                                    <img src="img/galery2.jpg" alt="galery">
-                                </a>
-                            </div>
-                            <div class="col-sm-12 col-md-4">
-                                <a class="lightbox" href="img/galery3.jpg">
-                                    <img src="img/galery3.jpg" alt="galery">
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <a class="lightbox" href="img/gambar4.jpg">
-                                    <img src="img/gambar4.jpg" alt="galery">
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <a class="lightbox" href="img/gambar5.jpg">
-                                    <img src="img/gambar5.jpg" alt="galery">
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <a class="lightbox" href="img/galery4.jpeg">
-                                    <img src="img/galery4.jpeg" alt="galery">
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <a class="lightbox" href="img/galery5.jpeg">
-                                    <img src="img/galery5.jpeg" alt="galery">
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <a class="lightbox" href="img/galery7.jpeg">
-                                    <img src="img/galery7.jpeg" alt="galery">
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <a class="lightbox" href="img/galery8.jpeg">
-                                    <img src="img/galery8.jpeg" alt="galery">
-                                </a>
-                            </div>
+
+                            @foreach ($galleris as $galleri)
+                                <div class="col-sm-6 col-md-4">
+                                    <a class="lightbox" href="{{ asset('img/' . $galleri) }}">
+                                        <img src="{{ asset('img/' . $galleri) }}" alt="galery"
+                                            style="width: 360px; height: 200px">
+                                    </a>
+                                </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>

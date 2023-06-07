@@ -28,8 +28,13 @@ class userController extends Controller
              $beritas = Berita::paginate(5);
          }
         // $beritas = Berita::paginate(5);
+        $gambars = Berita::pluck('gambar');
+        $galleris  = Berita::pluck('gambar')->take(9);
+        // $beritas = Berita::paginate(5);
         return view('index', [
             'beritas' => $beritas,
+            'gambars' => $gambars,
+            'galleris' => $galleris,
         ]);
     }
     public function detail_berita($id)
