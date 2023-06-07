@@ -20,9 +20,16 @@ class userController extends Controller
     public function index()
     {
         // dd(auth()->user()->nama);
-        $berita = Berita::all();
+        $keyword = request('search');
+     
+         if ($keyword) {
+             $beritas = Berita::where('judul', 'like', '%' . $keyword . '%')->paginate(5);
+         } else {
+             $beritas = Berita::paginate(5);
+         }
+        // $beritas = Berita::paginate(5);
         return view('index', [
-            'berita' => $berita,
+            'beritas' => $beritas,
         ]);
     }
     public function detail_berita($id)

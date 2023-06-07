@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/navbar.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.css') }}">
     <script src="https://kit.fontawesome.com/bc3cf86588.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous">
@@ -19,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
         integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous">
     </script>
-    <script src="js/bootstrap.js"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
 
 </head>
 
@@ -37,6 +37,17 @@
             <p class="tulisan"> <img style="height:55px;width:80px;" src="img/desa.png" alt=""> SELAMAT DATANG
                 DI WEBSITE DESA KOM C </p>
         </marquee>
+
+        <div class="col-md-8 mb-3">
+            <form method="get" action="">
+                <div class="input-group">
+                    <input type="search" name="search" placeholder="Cari berita" class="form-control mr-3">
+                    <div class="input-group-append mx-3">
+                        <button type="submit" class="btn btn-success">Cari</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
         <div class="row">
             <div class="col-8 ">
@@ -84,28 +95,31 @@
 
 
                 <!--button 1-->
-                @foreach($berita as $berita)
-                <div class="d-grid gap-2">
-                    <a href="{{ route('detail', ['id' => $berita->id]) }}"
-                        style="border-radius: 10px;box-shadow: 10px 1px 10px gray; background-color:#327a6d;"
-                        class="btn " type="button"><b>{{ $berita->judul }}</b></a>
-                </div><br>
+                @foreach ($beritas as $berita)
+                    <div class="d-grid gap-2">
+                        <a href="{{ route('detail', ['id' => $berita->id]) }}"
+                            style="border-radius: 10px;box-shadow: 10px 1px 10px gray; background-color:#327a6d;"
+                            class="btn " type="button"><b>{{ $berita->judul }}</b></a>
+                    </div><br>
 
-                <!--card 1-->
-                <div class="card mb-3" style="max-width: 800px;border-radius: 10px;box-shadow: 10px 1px 10px gray;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img style="width: 400px;height:200px;" src="{{ asset('img/'.$berita->gambar) }}"
-                                class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <p class="card-text">{{ $berita->excerpt }}</p>
+                    <!--card 1-->
+                    <div class="card mb-3" style="max-width: 800px;border-radius: 10px;box-shadow: 10px 1px 10px gray;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img style="width: 400px;height:200px;" src="{{ asset('img/' . $berita->gambar) }}"
+                                    class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <p class="card-text">{{ $berita->excerpt }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div><br>
+                    </div><br>
                 @endforeach
+                <div class="d-flex justify-content-center">
+                    {{ $beritas->links() }}
+                </div>
                 <!--button 2-->
 
 
@@ -314,8 +328,8 @@
             }
         </script>
         <script src="https://kit.fontawesome.com/bc3cf86588.js" crossorigin="anonymous"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/style.js"></script>
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+        <script src="{{ asset('js/style.js') }}"></script>
 
 </body>
 
