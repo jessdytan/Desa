@@ -39,6 +39,9 @@ Route::prefix('admin')->group(function () {
     Route::get('pengaduan',[AdminAuthController::class,'pengaduan'])->name('admin.pengaduan');
     Route::get('pengaduan_masuk',[AdminAuthController::class,'pengaduan_masuk'])->name('pengaduan.masuk');
     Route::get('pengaduan_process',[AdminAuthController::class,'pengaduan_process'])->name('pengaduan.process');
+    Route::post('ubah_status_selesai/{id}',[AdminAuthController::class,'ubah_status_selesai'])->name('ubah.selesai');
+    Route::post('ubah_status_tolak/{id}',[AdminAuthController::class,'ubah_status_tolak'])->name('ubah.tolak');
+    Route::post('ubah_status_proses/{id}',[AdminAuthController::class,'ubah_status_proses'])->name('ubah.process');
     Route::get('detail_pengaduan/{id}',[AdminAuthController::class,'detail_pengaduan'])->name('pengaduan.detail');
 
     Route::get('pengaduan_selesai',[AdminAuthController::class,'pengaduan_selesai'])->name('pengaduan.selesai');

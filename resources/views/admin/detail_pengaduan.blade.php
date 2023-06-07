@@ -5,40 +5,31 @@
     <div class="main-content">
         <div class="row">
             <div class="col-md-12">
-                <div class="table-wrapper">
-                    @if (session('status'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>
-                                Berhasil!
-                            </strong>
-                            {{ session('status') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @elseif(session('edit_status'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>
-                                Berhasil!
-                            </strong>
-                            {{ session('edit_status') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @elseif(session('hapus_status'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>
-                                Berhasil!
-                            </strong>
-                            {{ session('hapus_status') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
-                    <h1>{{ $pengaduan->judul_laporan }}</h1>
-                    <p>{{ $pengaduan -> content_laporan }}</p>
+                <div class="card">
+                            <div class="card-body">
+                                <h1>{{ $pengaduan->judul_laporan }}</h1>
+                                <p>Ditulis oleh : {{ $pengaduan->nama }}</p>
+                                <p class="pb-3">Diajukan pada : {{ $pengaduan->created_at }}</p>
+                                <h3>Isi Pengajuan</h3>
+                                <p class="pb-4">{{ $pengaduan -> content_laporan }}</p>
+                                @if (isset($pengaduan->gambar))
+                                    <img src="" alt="" srcset="">
+                                    
+                                @else
+                                    
+                                @endif
+                                
+                                <div class="card-action mt-4">
+                                    <form action="{{ route('ubah.selesai', ['id' => $pengaduan->id]) }}" method="post">
+                                        @csrf
+                                        <input type="hidden" value="2" name="status_laporan">
+                                        <button type="submit" name="btn-submit" class="btn btn-success">Selesaikan Pengajuan</button>
+                                        <!-- <button class="btn btn-danger">Cancel</button> -->
+                                        <a href="javascript:void(0)" onclick="window.history.back();" class="btn btn-danger">Batal</a>
+                                    </form>
+                                </div>
+                        </form>
+                </div>
                     
                     
 
@@ -63,7 +54,6 @@
 
 
 
-                </div>
             </div>
 
 

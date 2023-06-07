@@ -54,4 +54,7 @@ class User extends Authenticatable
     public function komentar(){
         return $this->hasMany(Komentar::class);
     }
+    public function pengaduan(){
+        return $this->hasMany(Pengaduan::class);
+    }
 }

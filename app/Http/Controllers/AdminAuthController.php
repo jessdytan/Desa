@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use illuminate\Support\Facades\Auth;
+use App\Mail\SendHtmlEmail;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Admin;
 use App\Models\User;
 use App\Models\Pengaduan;
@@ -25,10 +27,7 @@ class AdminAuthController extends Controller
     }
     public function pengaduan()
     {
-        $pengaduan = Pengaduan::join('users', 'pengaduans.penduduk_id', '=', 'users.id')
-        ->select('pengaduans.*', 'users.*')
-        ->get();
-        
+        $pengaduan = Pengaduan::with('user')->get();
         return view('admin.pengaduan', compact('pengaduan'));
     }
     public function pengaduan_masuk()
@@ -50,6 +49,30 @@ class AdminAuthController extends Controller
         $pengaduan = Pengaduan::find($id)->first();
         
         return view('admin.detail_pengaduan', compact('pengaduan'));
+    }
+    public function ubah_status_selesai(Request $request, $id)
+    {
+        $pengaduan = Pengaduan::find($id)->first();
+        $pengaduan-> status_laporan = $request->status_laporan;
+        $pengaduan->save();
+        $email = new SendHtmlEmail();
+        $recipientEmail = $pengaduan->user->email ;
+        Mail::to($recipientEmail)->send($email);
+        return redirect()->route('admin.pengaduan')->with('edit_status', 'Pengajuan telah diselesaikan');
+    }
+    public function ubah_status_proses(Request $request, $id)
+    {
+        $pengaduan = Pengaduan::find($id)->first();
+        $pengaduan-> status_laporan = $request->status_laporan;
+        $pengaduan->save();
+        return redirect()->route('admin.pengaduan')->with('edit_status', 'Pengajuan telah diproses');
+    }
+    public function ubah_status_tolak(Request $request, $id)
+    {
+        $pengaduan = Pengaduan::find($id)->first();
+        $pengaduan-> status_laporan = $request->status_laporan;
+        $pengaduan->save();
+        return redirect()->route('admin.pengaduan')->with('edit_status', 'Pengajuan telah diproses');
     }
     public function pengaduan_selesai()
     {

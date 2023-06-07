@@ -54,7 +54,7 @@
                                         <label for="selectAll"></label></th>
                                 <th>Nama</th>
                                 <th>Judul Pengajuan</th>
-                                <th>Email Pengaju</th>
+                                <th>Email Pengirim</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -66,9 +66,9 @@
                                     <th><span class="custom-checkbox">
                                             <input type="checkbox" id="checkbox1" name="option[]" value="1">
                                             <label for="checkbox1"></label></th>
-                                    <th>{{ $penduduk->nama }}</th>
+                                    <th>{{ $penduduk->user->nama }}</th>
                                     <th>{{ $penduduk->judul_laporan }}</th>
-                                    <th>{{ $penduduk->email }}</th>
+                                    <th>{{ $penduduk->user->email }}</th>
                                     <th>
                                         @if ($penduduk->status_laporan == 0)
                                             <h5><span class="badge badge-warning">Masuk</span></h5>
@@ -76,7 +76,7 @@
                                             <h5><span class="badge badge-secondary">Diproses</span></h5>
                                         @elseif ($penduduk->status_laporan == 2)
                                             <h5><span class="badge badge-success">Selesai</span></h5>
-                                            @else
+                                        @else
                                             <h5><span class="badge badge-danger">Ditolak</span></h5>
                                         @endif
                                     </th>

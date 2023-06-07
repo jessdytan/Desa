@@ -54,7 +54,7 @@
                                         <label for="selectAll"></label></th>
                                 <th>Nama</th>
                                 <th>Judul Pengajuan</th>
-                                <th>Email Pengaju</th>
+                                <th>Email Pengirim</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -67,11 +67,26 @@
                                     <th><span class="custom-checkbox">
                                             <input type="checkbox" id="checkbox1" name="option[]" value="1">
                                             <label for="checkbox1"></label></th>
-                                    <th>{{ $penduduk->nama }}</th>
-                                    <th><a href="{{ route('pengaduan.detail',['id'=>$penduduk->id]) }}">{{ $penduduk->judul_laporan }}</a></th>
-                                    <th>{{ $penduduk->email }}</th>
+                                    <th>{{ $penduduk->user->nama }}</th>
+                                    <th><a href="{{ route('pengaduan.detail', ['id' => $penduduk->id]) }}">{{ $penduduk->judul_laporan }}</a></th>
+                                    <th>{{ $penduduk->user->email }}</th>
                                     <th><h5><span class="badge badge-secondary">Diproses</span></h5></th>
-                                    <th><button class="btn btn-danger">Tolak</button></th>
+                                    <th>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <form action="{{ route('ubah.selesai', ['id' => $penduduk->id]) }}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" value="2" name="status_laporan">
+                                                    <button type="submit" name="btn-submit" class="btn btn-success">Selesai</button>
+                                                </form>
+                                            </div>
+                                            <div class="col-6">
+                                              <form action="{{ route('ubah.tolak',['id'=>$penduduk->id]) }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" value="3" name="status_laporan">
+                                                <button type="submit" class="btn btn-danger">Tolak</button></th>
+                                              </form>
+                                            </div
                                 </tr>
                             @endforeach
                         </tbody>
