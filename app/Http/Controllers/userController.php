@@ -48,6 +48,23 @@ class userController extends Controller
         return view('Pengaduan', compact('category'));
     }
 
+    public function visi_misi()
+    {
+        return view('visimisi.visi_misi');
+    }
+    public function pem_desa()
+    {
+        return view('pemerintahan_desa.pem_desa');
+    }
+    public function badan_permusyawaratan()
+    {
+        return view('badan_permusyawaratan.badan_permusyawaratan');
+    }
+    public function data_pekerjaan()
+    {
+        return view('data_pekerjaan.data_pekerjaan');
+    }
+
     public function komentar(request $request)
     {
         $komentar = new Komentar;

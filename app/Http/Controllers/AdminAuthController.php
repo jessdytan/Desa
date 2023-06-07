@@ -46,13 +46,13 @@ class AdminAuthController extends Controller
     }
     public function detail_pengaduan($id)
     {
-        $pengaduan = Pengaduan::find($id)->first();
+        $pengaduan = Pengaduan::find($id);
         
         return view('admin.detail_pengaduan', compact('pengaduan'));
     }
     public function ubah_status_selesai(Request $request, $id)
     {
-        $pengaduan = Pengaduan::find($id)->first();
+        $pengaduan = Pengaduan::find($id);
         $pengaduan-> status_laporan = $request->status_laporan;
         $pengaduan->save();
         $email = new SendHtmlEmail();
@@ -62,14 +62,14 @@ class AdminAuthController extends Controller
     }
     public function ubah_status_proses(Request $request, $id)
     {
-        $pengaduan = Pengaduan::find($id)->first();
+        $pengaduan = Pengaduan::find($id);
         $pengaduan-> status_laporan = $request->status_laporan;
         $pengaduan->save();
         return redirect()->route('admin.pengaduan')->with('edit_status', 'Pengajuan telah diproses');
     }
     public function ubah_status_tolak(Request $request, $id)
     {
-        $pengaduan = Pengaduan::find($id)->first();
+        $pengaduan = Pengaduan::find($id);
         $pengaduan-> status_laporan = $request->status_laporan;
         $pengaduan->save();
         return redirect()->route('admin.pengaduan')->with('edit_status', 'Pengajuan telah diproses');

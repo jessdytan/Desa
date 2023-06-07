@@ -73,6 +73,10 @@ Route::prefix('penduduk')->group(function () {
     Route::post('/store_register', [UserController::class, 'reg_penduduk'])->name('register');
     Route::get('/artikel/{id}', [UserController::class, 'detail_berita'])->name('detail');
     Route::post('/komentar', [UserController::class, 'komentar'])->name('komentar');
+    Route::get('/visi_misi', [UserController::class, 'visi_misi']);
+    Route::get('/pem_desa', [UserController::class, 'pem_desa']);
+    Route::get('/badan_permusyawaratan', [UserController::class, 'badan_permusyawaratan']);
+    Route::get('/data_pekerjaan', [UserController::class, 'data_pekerjaan']);
     Route::get('/pengaduan', [UserController::class, 'pengaduan'])
     ->middleware('auth')
     ->name('pengaduan');
