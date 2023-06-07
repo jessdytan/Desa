@@ -54,7 +54,9 @@
                                         <label for="selectAll"></label></th>
                                 <th>Nama</th>
                                 <th>Judul Pengajuan</th>
+
                                 <th>Email</th>
+
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -100,8 +102,5 @@
 
                 </div>
             </div>
-
-
-            
     </div>
 @endsection

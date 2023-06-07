@@ -6,6 +6,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-wrapper">
+
+                    <div class=" col-lg-3  mb-2 mt-1">
+                        <div class="xp-searchbar">
+                            <form method="get">
+                                <div class="input-group">
+                                    <input type="search" class="form-control" placeholder="Cari Komentar" name="search">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="submit" id="button-addon2">Go
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                     @if (session('status'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <strong>
@@ -60,8 +75,15 @@
                         </thead>
 
                         <tbody>
-                            @php($i = 1)
-                            @foreach ($komentar as $komentar)
+                            @php
+                                $t = request('page');
+                            @endphp
+                            @if (empty($t))
+                                <?php $i = 1; ?>
+                            @else
+                                <?php $i = $t * 5 - 4; ?>
+                            @endif
+                            @foreach ($komentars as $komentar)
                                 <tr>
                                     <th>{{ $i++ }}</th>
                                     <th>{{ $komentar->user->nama }}</th>
@@ -84,6 +106,9 @@
 
 
                     </table>
+                    <div class="d-flex justify-content-end">
+                        {{ $komentars->links() }}
+                    </div>
 
                 </div>
             </div>

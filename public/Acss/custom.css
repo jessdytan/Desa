@@ -604,7 +604,7 @@ background-color:rgba(0,0,0,0.09);
 				line-height:30px;
 				border-radius:2px!important;
 				text-align:center;
-				padding:0 6px;
+				/* padding:0 6px; */
 			}
 			
 			.pagination  li a:hover{

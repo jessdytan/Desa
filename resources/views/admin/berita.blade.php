@@ -6,6 +6,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-wrapper">
+
+                    <div class=" col-lg-3  mb-2 mt-1">
+                        <div class="xp-searchbar">
+                            <form method="get">
+                                <div class="input-group">
+                                    <input type="search" class="form-control" placeholder="Cari berita" name="search">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="submit" id="button-addon2">Go
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                     @if (session('status'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <strong>
@@ -37,6 +52,7 @@
                             </button>
                         </div>
                     @endif
+
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
@@ -46,10 +62,6 @@
                                 <a href="{{ route('tambah_berita') }}" class="btn btn-success">
                                     <i class="material-icons">&#xE147;</i>
                                     <span>Tambah berita</span>
-                                </a>
-                                <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
-                                    <i class="material-icons">&#xE15C;</i>
-                                    <span>hapus</span>
                                 </a>
                             </div>
                         </div>
@@ -67,8 +79,15 @@
                         </thead>
 
                         <tbody>
-                            @php($i = 1)
-                            @foreach ($berita as $berita)
+                            @php
+                                $t = request('page');
+                            @endphp
+                            @if (empty($t))
+                                <?php $i = 1; ?>
+                            @else
+                                <?php $i = ($t * 5) - 4; ?>
+                            @endif
+                            @foreach ($beritas as $berita)
                                 <tr>
                                     <th>{{ $i++ }}</th>
                                     <th>{{ $berita->judul }}</th>
@@ -98,9 +117,10 @@
                             @endforeach
                         </tbody>
 
-
                     </table>
-
+                    <div class="d-flex justify-content-end">
+                        {{ $beritas->links() }}
+                    </div>
                 </div>
             </div>
 

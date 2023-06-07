@@ -63,6 +63,7 @@
                         <tbody>
                             {{-- @php($i = 1) --}}
                             @foreach ($pengaduan as $penduduk)
+                            {{-- @dd($penduduk->user->nama) --}}
                                 <tr>
                                     <th><span class="custom-checkbox">
                                             <input type="checkbox" id="checkbox1" name="option[]" value="1">
