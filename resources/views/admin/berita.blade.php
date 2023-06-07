@@ -20,7 +20,7 @@
                             </form>
                         </div>
                     </div>
-                    
+
                     @if (session('status'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <strong>
@@ -85,7 +85,7 @@
                             @if (empty($t))
                                 <?php $i = 1; ?>
                             @else
-                                <?php $i = $t * 5 - 4; ?>
+                                <?php $i = ($t * 5) - 4; ?>
                             @endif
                             @foreach ($beritas as $berita)
                                 <tr>

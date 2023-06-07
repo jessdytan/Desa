@@ -87,7 +87,14 @@
                     </form>
                 </div>
             @else
-
+                <h5>
+                    Login untuk berkomentar
+                </h5>
+                <div class="col-md-3">
+                    <a href="{{ route('login_user') }}" class="btn btn-success">
+                        Login
+                    </a>
+                </div>
             @endauth
 
 
@@ -108,7 +115,8 @@
             <!--layanan pengaduan desa-->
             <div class="col-4">
                 <div class="sudes">
-                    <div class="bacaan"><i class="fa-solid fa-envelope" style="color: #327a6d;"></i> LAYANAN PENGADUAN
+                    <div class="bacaan"><i class="fa-solid fa-envelope" style="color: #327a6d;"></i> LAYANAN
+                        PENGADUAN
                         DESA</div>
                     <div class="">
                         <a href="Pengaduan.php"><button style=" background-color:#327a6d;" class="btn"
@@ -128,7 +136,8 @@
                     <div class=""><a
                             href="https://www.ekon.go.id/publikasi/detail/4600/program-kartu-prakerja-berlanjut-di-tahun-2023-dengan-skema-normal-yang-memberikan-bantuan-pelatihan-lebih-besar">Pendaftaran
                             Program PraKerja</a></div>
-                    <div class=""><a href="https://gemari.id/gemari/2019/8/12/bpjs-desa-yang-mandiri">BPJS Desa
+                    <div class=""><a href="https://gemari.id/gemari/2019/8/12/bpjs-desa-yang-mandiri">BPJS
+                            Desa
                             Mandiri</a></div>
                     <div class=""><a
                             href="https://rbtv.disway.id/read/8928/daftar-7-blt-yang-cair-juni-2023-pencairan-melalui-bank-himbara-dan-kantor-pos-cek-di-sini">Pembagian
@@ -148,8 +157,10 @@
                 <!--Perangkat Desa-->
 
                 <div class="pemberitahuan1 px-5">
-                    <p style="text-align: center;"><i class="fa-solid fa-user" style="color: #327a6d;"></i> <b>PERANGKAT
-                            DESA</b></p>
+                    <p style="text-align: center;"><i class="fa-solid fa-user" style="color: #327a6d;"></i>
+                        <b>PERANGKAT
+                            DESA</b>
+                    </p>
                     <hr>
                     <div class="slideshow-container">
                         <div class="mySlides fade">
@@ -189,7 +200,8 @@
 
                 <!--maps-->
                 <div class="pemberitahuan1 px-5">
-                    <p><i class=" fa-sharp fa-solid fa-map" style="color: #327a6d;"></i> <b> PETA WILAYAH DESA</b></p>
+                    <p><i class=" fa-sharp fa-solid fa-map" style="color: #327a6d;"></i> <b> PETA WILAYAH DESA</b>
+                    </p>
                     <hr>
                     <iframe class="maps"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.1150028419165!2d98.5719838742212!3d3.560982750484596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312f61a43f17af%3A0x63b82c475cf9c21f!2sDESA%20SUKAMAJU%20KECAMATAN%20SUNGGAL%20KAB.DELI%20SERDANG!5e0!3m2!1sen!2sid!4v1685125890692!5m2!1sen!2sid"
