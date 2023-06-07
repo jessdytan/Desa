@@ -54,8 +54,9 @@
                                         <label for="selectAll"></label></th>
                                 <th>Nama</th>
                                 <th>Judul Pengajuan</th>
-                                <th>Email Pengaju</th>
+                                <th>Email Pengirim</th>
                                 <th>Status</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
 
@@ -66,10 +67,17 @@
                                     <th><span class="custom-checkbox">
                                             <input type="checkbox" id="checkbox1" name="option[]" value="1">
                                             <label for="checkbox1"></label></th>
-                                    <th>{{ $penduduk->nama }}</th>
+                                    <th>{{ $penduduk->user->nama }}</th>
                                     <th><a href="">{{ $penduduk->judul_laporan }}</a></th>
-                                    <th>{{ $penduduk->email }}</th>
+                                    <th>{{ $penduduk->user->email }}</th>
                                     <th><h5><span class="badge badge-warning">Masuk</span></h5></th>
+                                    <th>
+                                        <form action="{{ route('ubah.process', ['id' => $penduduk->id]) }}" method="post">
+                                            @csrf
+                                            <input type="hidden" value="1" name="status_laporan">
+                                            <button type="submit" name="btn-submit" class="btn btn-secondary">Proses</button>
+                                        </form>
+                                    </th>
                                 </tr>
                             @endforeach
                         </tbody>
