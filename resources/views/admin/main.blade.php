@@ -109,10 +109,7 @@
                                                         @endphp
                                                         {{ $user->nama }}
                                                     </a></li>
-                                                <li><a href="#">
-                                                        <span class="material-icons">settings</span>
-                                                        Settings
-                                                    </a></li>
+                                                
                                                 <li><a href="{{ route('logout.admin') }}">
                                                         <span class="material-icons">logout</span>
                                                         Logout

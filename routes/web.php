@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\pendudukController;
 // use App\Http\Controllers\adminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -22,19 +21,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[userController::class,'index'])->name('mainpage');
 
-Route::post('/admin/store_data',[pendudukController::class,'store_data'])->name('store_data');
+
 
 Route::get('/admin/berita/checkSlug', [AdminController::class, 'checkSlug']);
 
 Route::prefix('admin')->group(function () {
     
-    // Route::get('{id}/edit',[pendudukController::class,'edit_data'])->name('update_data');
+    // Route::get('{id}/edit',[AdminAuthController::class,'edit_data'])->name('update_data');
 
     Route::get('login_admin',[AdminAuthController::class,'login'])->name('login.admin');
     Route::post('login_admin_logic',[AdminAuthController::class,'login_logic'])->name('login.admin_logic');
     Route::get('logout',[AdminAuthController::class,'logout'])->name('logout.admin');
 
     Route::get('admin',[AdminAuthController::class,'admin'])->name('admin');
+    Route::post('store_data',[AdminAuthController::class,'store_data'])->name('store_data');
+    Route::get('{id}/edit',[AdminAuthController::class,'edit_data'])->name('edit.data');
+    Route::put('{id}',[AdminAuthController::class,'update_data'])->name('update.data');
+    Route::delete('{id}/delete',[AdminAuthController::class,'delete_penduduk'])->name('penduduk.delete'); 
 
     Route::get('pengaduan',[AdminAuthController::class,'pengaduan'])->name('admin.pengaduan');
     Route::get('pengaduan_masuk',[AdminAuthController::class,'pengaduan_masuk'])->name('pengaduan.masuk');
@@ -45,9 +48,9 @@ Route::prefix('admin')->group(function () {
     Route::get('detail_pengaduan/{id}',[AdminAuthController::class,'detail_pengaduan'])->name('pengaduan.detail');
 
     Route::get('pengaduan_selesai',[AdminAuthController::class,'pengaduan_selesai'])->name('pengaduan.selesai');
-    Route::get('admin/{id}/edit',[pendudukController::class,'edit_data'])->name('edit.data');
-    Route::put('admin/{id}',[pendudukController::class,'update_data'])->name('update.data');
-    Route::delete('admin/{id}/delete',[pendudukController::class,'delete_penduduk'])->name('penduduk.delete');
+    Route::get('admin/{id}/edit',[AdminAuthController::class,'edit_data'])->name('edit.data');
+    Route::put('admin/{id}',[AdminAuthController::class,'update_data'])->name('update.data');
+    Route::delete('admin/{id}/delete',[AdminAuthController::class,'delete_penduduk'])->name('penduduk.delete');
     Route::get('berita',[AdminController::class,'berita'])->name('berita');
     Route::get('komentar',[AdminController::class,'komentar'])->name('admin_komentar');
     Route::get('/tambah_berita', [AdminController::class,'tambah_berita'])->name('tambah_berita');
@@ -73,10 +76,11 @@ Route::prefix('penduduk')->group(function () {
     Route::post('/store_register', [UserController::class, 'reg_penduduk'])->name('register');
     Route::get('/artikel/{id}', [UserController::class, 'detail_berita'])->name('detail');
     Route::post('/komentar', [UserController::class, 'komentar'])->name('komentar');
-    Route::get('/visi_misi', [UserController::class, 'visi_misi']);
-    Route::get('/pem_desa', [UserController::class, 'pem_desa']);
-    Route::get('/badan_permusyawaratan', [UserController::class, 'badan_permusyawaratan']);
-    Route::get('/data_pekerjaan', [UserController::class, 'data_pekerjaan']);
+    Route::get('/visi_misi', [UserController::class, 'visi_misi'])->name('visi');
+    Route::get('/pem_desa', [UserController::class, 'pem_desa'])->name('pemerintah');
+    Route::get('/badan_permusyawaratan', [UserController::class, 'badan_permusyawaratan'])->name('badan_pem');
+    Route::get('/data_pendidikan', [UserController::class, 'data_pendidikan'])->name('data_pendidikan');
+    Route::get('/data_pekerjaan', [UserController::class, 'data_pekerjaan'])->name('data_job');
     Route::get('/pengaduan', [UserController::class, 'pengaduan'])
     ->middleware('auth')
     ->name('pengaduan');

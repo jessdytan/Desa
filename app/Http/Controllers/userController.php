@@ -64,6 +64,10 @@ class userController extends Controller
     {
         return view('data_pekerjaan.data_pekerjaan');
     }
+    public function data_pendidikan()
+    {
+        return view('data_pendidikan.data_pendidikan');
+    }
 
     public function komentar(request $request)
     {
@@ -122,7 +126,7 @@ class userController extends Controller
             'lokasi' => "required|min:10",
             'bukti' => "image|mimes:jpg,png,jpeg,gif,svg"
         ]);
-
+        
         $new_laporan = new Pengaduan;
         $new_laporan->judul_laporan = $request->title;
         $new_laporan->penduduk_id = $request->penduduk;
@@ -132,6 +136,19 @@ class userController extends Controller
         $new_laporan->category_id = $request->category;
         $new_laporan->gambar = $request->bukti;
         $new_laporan->id = $request->id;
+        
+        if ($request->hasFile('gambar')) {
+            $location = public_path('/img');
+
+            $namaFile = $request->file('gambar')->getClientOriginalName();
+            $namaFileBaru = substr(uniqid(), 5, 5);
+            $namaFileBaru .= '_';
+            $namaFileBaru .= $namaFile;
+
+            $request->file('gambar')->move($location, $namaFileBaru);
+
+            $new_laporan->gambar = $namaFileBaru;
+        }
 
         $new_laporan->save();
 

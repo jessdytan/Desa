@@ -13,49 +13,26 @@
                              data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PEMERINTAHAN
                              DESA</a>
                          <ul class="dropdown-menu">
-                             <li><a class="dropdown-item" href="/visi_misi">Visi dan Misi</a></li>
-                             <li><a class="dropdown-item" href="/pem_desa">Pemerintah Desa</a></li>
-                             <li><a class="dropdown-item" href="/badan_permusyawaratan">Badan Permusyawaratan Desa</a>
+                             <li><a class="dropdown-item" href="{{ route('visi') }}">Visi dan Misi</a></li>
+                             <li><a class="dropdown-item" href="{{ route('pemerintah') }}">Pemerintah Desa</a></li>
+                             <li><a class="dropdown-item" href="{{ route('badan_pem') }}">Badan Permusyawaratan Desa</a>
                              </li>
                          </ul>
                      </li>
-                     <li class="nav-item dropdown">
-                         <a style="color:white;font-size:larger;font-weight:200px; " class="nav-link dropdown-toggle"
-                             data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">PROFIL
-                             DESA</a>
-                         <ul class="dropdown-menu">
-                             <li><a class="dropdown-item" href="#"> Sejarah Desa</a></li>
-                             <li><a class="dropdown-item" href="#">Profil Wilayah Desa</a></li>
-                             <li><a class="dropdown-item" href="#">Arti Lambang Desa</a></li>
-                         </ul>
-                     </li>
+                     
                      <li class="nav-item dropdown">
                          <a style="color:white;font-size:larger;font-weight:200px; " class="nav-link dropdown-toggle"
                              data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">DATA DESA</a>
                          <ul class="dropdown-menu">
-                             <li><a class="dropdown-item" href="#">Data Wilayah Administratif</a></li>
-                             <li><a class="dropdown-item" href="#"> Data Pendidikan Dalam KK</a></li>
-                             <li><a class="dropdown-item" href="#"> Data Pendidikan Ditempuh</a></li>
-                             <li><a class="dropdown-item" href="/data_pekerjaan"> Data Pekerjaan</a></li>
-                             <li><a class="dropdown-item" href="#"> Data Jenis Kelamin</a></li>
-                             <li><a class="dropdown-item" href="#"> Data Golongan Darah</a></li>
-                             <li><a class="dropdown-item" href="#"> Data Kelompok Umur</a></li>
-                             <li><a class="dropdown-item" href="#"> Data Perkawinan</a></li>
+                             <li><a class="dropdown-item" href="{{ route('data_pendidikan') }}"> Data Pendidikan Dalam KK</a></li>
+                             <li><a class="dropdown-item" href="{{ route('data_job') }}"> Data Pekerjaan</a></li>
                          </ul>
                      </li>
                      <li class="nav-item dropdown">
                          <a style="color:white;font-size:larger;font-weight:200px; " class="nav-link "
                              href="{{ route('pengaduan') }}" role="button" aria-expanded="false">LAYANAN PENGADUAN</a>
                      </li>
-                     <li class="nav-item dropdown">
-                         <a style="color:white;font-size:larger;font-weight:200px; " class="nav-link dropdown-toggle"
-                             data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">LEMMAS</a>
-                         <ul class="dropdown-menu">
-                             <li><a class="dropdown-item" href="#">LPM</a></li>
-                             <li><a class="dropdown-item" href="#">Karang Taruna</a></li>
-                             <li><a class="dropdown-item" href="#">PKK</a></li>
-                         </ul>
-                     </li>
+                    
                      <li class="nav-item dropdown">
                          @auth
                              <a style="color:white;font-size:larger;font-weight:200px; " class="nav-link" href="{{ route('logout.admin') }}"

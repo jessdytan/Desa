@@ -164,22 +164,22 @@
                     <hr>
                     <div class="slideshow-container">
                         <div class="mySlides fade">
-                            <img class="foto" src="img/Rifqy.jpg" style="width:100%">
+                            <img class="foto" src="{{ asset('img/Rifqy.jpg') }}" style="width:100%">
                             <div class="text">Rifqy Jabrah Rhae- Kepala Desa</div>
                         </div>
 
                         <div class="mySlides fade">
-                            <img class="foto" src="img/Jessindy.jpg" style="width:100%">
+                            <img class="foto" src="{{ asset('img/Jessindy.jpg') }}" style="width:100%">
                             <div class="text">Jessyndy Tanuwijaya-W.Kepala Desa</div>
                         </div>
 
                         <div class="mySlides fade">
-                            <img class="foto" src="img/Yohana.jpg" style="width:100%">
+                            <img class="foto" src="{{ asset('img/Yohana.jpg') }}" style="width:100%">
                             <div class="text">Yohana Marbun-Sekretaris Desa</div>
                         </div>
 
                         <div class="mySlides fade">
-                            <img class="foto" src="img/Aliya.jpg" style="width:100%">
+                            <img class="foto" src="{{ asset('img/Aliya.jpg') }}" style="width:100%">
                             <div class="text">Aliya Afifah-Bendahara Desa</div>
                         </div>
 
@@ -244,6 +244,7 @@
         }
     </script>
     <script src="https://kit.fontawesome.com/bc3cf86588.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
     <script src="{{ asset('js/style.js') }}"></script>
 </body>
 

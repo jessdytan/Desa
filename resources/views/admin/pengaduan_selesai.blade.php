@@ -49,9 +49,7 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th><span class="custom-checkbox">
-                                        <input type="checkbox" id="selectAll">
-                                        <label for="selectAll"></label></th>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Judul Pengajuan</th>
 
@@ -62,15 +60,13 @@
                         </thead>
 
                         <tbody>
-                            {{-- @php($i = 1) --}}
+                            @php($i = 1)
                             @foreach ($pengaduan as $penduduk)
                                 <tr>
-                                    <th><span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox1" name="option[]" value="1">
-                                            <label for="checkbox1"></label></th>
-                                    <th>{{ $penduduk->nama }}</th>
+                                    <th>{{ $i++ }}</th>
+                                    <th>{{ $penduduk->user->nama }}</th>
                                     <th><a href="">{{ $penduduk->judul_laporan }}</a></th>
-                                    <th>{{ $penduduk->email }}</th>
+                                    <th>{{ $penduduk->user->email }}</th>
                                     <th><h5><span class="badge badge-success">Selesai</span></h5></th>
                                 </tr>
                             @endforeach

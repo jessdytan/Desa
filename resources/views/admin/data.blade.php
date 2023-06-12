@@ -47,10 +47,7 @@
                                     <i class="material-icons">&#xE147;</i>
                                     <span>Tambah data penduduk</span>
                                 </a>
-                                <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
-                                    <i class="material-icons">&#xE15C;</i>
-                                    <span>hapus</span>
-                                </a>
+                                
                             </div>
                         </div>
                     </div>
@@ -58,9 +55,7 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th><span class="custom-checkbox">
-                                        <input type="checkbox" id="selectAll">
-                                        <label for="selectAll"></label></th>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>NIK</th>
                                 <th>Email</th>
@@ -70,12 +65,10 @@
                         </thead>
 
                         <tbody>
-                            {{-- @php($i = 1) --}}
+                            @php($i = 1)
                             @foreach ($user as $penduduk)
                                 <tr>
-                                    <th><span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox1" name="option[]" value="1">
-                                            <label for="checkbox1"></label></th>
+                                    <th>{{ $i++ }}</th>
                                     <th>{{ $penduduk->nama }}</th>
                                     <th>{{ $penduduk->nik }}</th>
                                     <th>{{ $penduduk->email }}</th>

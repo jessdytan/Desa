@@ -1,6 +1,6 @@
 <div id="sidebar">
     <div class="sidebar-header">
-        <h3><img src="{{asset('img/logo.png')}}" class="img-fluid" /><span>Desa kom C</span></h3>
+        <h3><img src="{{asset('img/logo.png')}}" class="img-fluid" /><span>Desa Sukamaju</span></h3>
     </div>
     <ul class="list-unstyled component m-0">
         <li class="{{ request()->is('admin/admin') ? 'active' : '' }}">
@@ -21,10 +21,10 @@
 		</li>
         
         <li class="{{ request()->is('admin/*berita*') ? 'active' : '' }}">
-            <a href="{{ route('berita') }}" class="dashboard"><i class="material-icons">library_books</i>kelola berita </a>
+            <a href="{{ route('berita') }}" class="dashboard"><i class="material-icons">newspaper</i>kelola berita </a>
         </li>
         <li class="{{ request()->is('admin/komentar*') ? 'active' : '' }}">
-            <a href="{{ route('admin_komentar') }}" class="dashboard"><i class="material-icons">library_books</i>kelola Komentar </a>
+            <a href="{{ route('admin_komentar') }}" class="dashboard"><i class="material-icons">forum</i>kelola Komentar </a>
         </li>
 
     </ul>

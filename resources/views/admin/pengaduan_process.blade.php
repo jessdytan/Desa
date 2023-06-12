@@ -49,9 +49,7 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th><span class="custom-checkbox">
-                                        <input type="checkbox" id="selectAll">
-                                        <label for="selectAll"></label></th>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Judul Pengajuan</th>
                                 <th>Email Pengirim</th>
@@ -61,12 +59,10 @@
                         </thead>
 
                         <tbody>
-                            {{-- @php($i = 1) --}}
+                            @php($i = 1)
                             @foreach ($pengaduan as $penduduk)
                                 <tr>
-                                    <th><span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox1" name="option[]" value="1">
-                                            <label for="checkbox1"></label></th>
+                                    <th>{{$i++}}</th>
                                     <th>{{ $penduduk->user->nama }}</th>
                                     <th><a href="{{ route('pengaduan.detail', ['id' => $penduduk->id]) }}">{{ $penduduk->judul_laporan }}</a></th>
                                     <th>{{ $penduduk->user->email }}</th>
@@ -84,7 +80,7 @@
                             @endforeach
                         </tbody>
 
-php
+
                     </table>
 
                     {{-- <div class="clearfix">

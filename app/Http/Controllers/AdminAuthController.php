@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use illuminate\Support\Facades\Auth;
 use App\Mail\SendHtmlEmail;
+use App\Mail\TolakEmail;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Admin;
 use App\Models\User;
@@ -24,6 +26,68 @@ class AdminAuthController extends Controller
     {
         $user = User::all();
         return view('admin.data', compact('user'));
+    }
+    public function store_data(Request $request){
+        // dd($request);
+
+        $validate = $request->validate([
+            'name' => 'required',
+            'nik' => 'required',
+            'email' => 'required',
+            'nohp' => 'required',
+            'password' => 'required'
+        ]);
+        // dd();
+
+        $new_post = new User;
+        $new_post -> nama       = $request->name;
+        $new_post -> nik        = $request->nik;
+        $new_post -> email      = $request->email;
+        $new_post -> no_hp       = $request->nohp;
+        $new_post -> password       = Hash::make($request->password);
+        
+        $new_post->save();
+
+        return redirect()->route('admin')->with('status', 'Data penduduk berhasil ditambahkan');
+    }
+
+    public function edit_data($id){
+        // dd($id);
+
+        // $id;
+        
+        $penduduk = User::find($id);
+
+        return view('admin.edit', compact('penduduk'));
+        
+    }
+
+    public function update_data(Request $request, $id){
+        $validate = $request->validate([
+            'name' => 'required',
+            'nik' => 'required',
+            'email' => 'required',
+            'nohp' => 'required'
+        ]);
+        // dd();
+
+        $penduduk = User::find($id);
+        $penduduk -> nama       = $request->name;
+        $penduduk -> nik        = $request->nik;
+        $penduduk -> email      = $request->email;
+        $penduduk -> no_hp       = $request->nohp;
+        $penduduk -> password       = Hash::make($request->password);
+        
+        $penduduk->save();
+
+        return redirect()->route('admin')->with('edit_status', 'Data penduduk berhasil edit');
+    }
+
+    public function delete_penduduk($id){
+        $penduduk = User::find($id);
+        $penduduk->delete();
+
+        return redirect()->route('admin')->with('hapus_status', 'Data penduduk berhasil dihapus');
     }
     public function pengaduan()
     {
@@ -72,6 +136,9 @@ class AdminAuthController extends Controller
         $pengaduan = Pengaduan::find($id);
         $pengaduan-> status_laporan = $request->status_laporan;
         $pengaduan->save();
+        $email = new TolakEmail();
+        $recipientEmail = $pengaduan->user->email ;
+        Mail::to($recipientEmail)->send($email);
         return redirect()->route('admin.pengaduan')->with('edit_status', 'Pengajuan telah diproses');
     }
     public function pengaduan_selesai()
